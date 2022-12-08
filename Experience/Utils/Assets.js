@@ -9,4 +9,4 @@ export default [
     type: "videoTexture",
     path: "/textures/temp.mp4"
   },
-];
+]
