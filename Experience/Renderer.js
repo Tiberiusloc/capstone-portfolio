@@ -34,7 +34,8 @@ export default class Renderer{
   //To Update scene
   update(){
     this.renderer.setViewport(0, 0, this.sizes.width, this.sizes.height)
-    this.renderer.render(this.scene, this.camera.perspectiveCamera)
+    //to change camera of screen
+    this.renderer.render(this.scene, this.camera.orthographicCamera)
     // Second Screen
     this.renderer.setScissorTest(true);
     this.renderer.setViewport(
@@ -50,8 +51,8 @@ export default class Renderer{
       this.sizes.width / 3, 
       this.sizes.height / 3, 
     )
-
-    this.renderer.render(this.scene, this.camera.orthographicCamera)
+      //to change camera of screen
+    this.renderer.render(this.scene, this.camera.perspectiveCamera)
 
     this.renderer.setScissorTest(false);
   }
