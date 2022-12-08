@@ -46,7 +46,7 @@ html, body {
 
 /* Section Form ----------------------------- */
 .section-margin{
-  height: 3000px;
+  height: 1900px;
   width: 100%;
 }
 
@@ -80,7 +80,7 @@ margin-right: auto;
 .section-heading {
   font-size: 18px;
   font-weight: 700;
-  line-height: 1.8;
+  line-height: 3;
   margin-top: 64px;
 }
 
@@ -89,6 +89,34 @@ margin-right: auto;
   margin-top: 18px;
   font-size: 16px;
 }
+
+a {
+  background-color: var(--primary-maroon);
+  box-shadow: 1px 5px 0 var(--text-black);
+  color: var(--primary-color);
+  display: inline-block;
+  padding: 1em 1.5em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 420px;
+  height: 80px;
+}
+
+a:hover {
+  background-color: var(--primary-color);
+  box-shadow: 0 5px 0 var(--primary-color);
+  color: var(--text-black);
+  cursor: pointer;
+}
+
+a:active {
+  box-shadow: none;
+  top: 5px;
+}
+
+
 /* Part of Section */
 .section-title {
   position: relative;
@@ -105,21 +133,39 @@ margin-right: auto;
   text-transform: uppercase;
 }
 
-.styleOne {
+.styleOne,
+.styleTwo,
+.styleThree {
+  position: absolute;
+  display: block;
+  width: 100%;
+  max-width: 278px;
+  height: 60px;
+  border: 1px solid var(--primary-maroon);
+  transform-origin: left;
+  transform: skewY(-25deg);
+}
 
+.styleOne {
+  top: 80px;
 }
 
 .styleTwo {
-
+  top: 80px;
 }
 
 .styleThree {
-  position: absolute;
-  display: black;
-  width: 100%;
-
+  top: 80px;
+  transform: skewY(25deg);
 }
 
+.section-number {
+  position: absolute;
+  bottom: 15px;
+  right: 0;
+  color: var(--primary-maroon);
+  font-size: 24px;
+}
 
 /* Hero Section ----------------------------- */
 
