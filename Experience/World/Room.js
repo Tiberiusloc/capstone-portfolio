@@ -9,7 +9,6 @@ export default class Room{
     this.resources = this.experience.resources;
     this.room = this.resources.items.room;
     this.actualRoom = this.room.scene
-    console.log(this.actualRoom);
 
     this.lerp = {
       current: 0,
@@ -51,9 +50,8 @@ this.actualRoom.children.forEach(child => {
 
   onMouseMove(){
     window.addEventListener("mousemove", (event) => {
-      console.log(event);
       this.rotation = (event.clientX - window.innerWidth / 2) * 2 / window.innerWidth;
-      this.lerp.target = this.rotation;
+      this.lerp.target = this.rotation * 0.1;
     });
   }
 
