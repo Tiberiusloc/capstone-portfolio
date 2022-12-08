@@ -1,5 +1,6 @@
 import Experience from "../Experience.js";
 import * as THREE from "three";
+import GSAP from "gsap";
 
 export default class Room{
   constructor(){
@@ -10,7 +11,14 @@ export default class Room{
     this.actualRoom = this.room.scene
     console.log(this.actualRoom);
 
+    this.lerp = {
+      current: 0,
+      target: 0,
+      ease: 0.07,
+    };
+
     this.setModel();
+    this.onMouseMove();
 
   }
 
@@ -41,12 +49,28 @@ this.actualRoom.children.forEach(child => {
     
   }
 
+  onMouseMove(){
+    window.addEventListener("mousemove", (event) => {
+      console.log(event);
+      this.rotation = (event.clientX - window.innerWidth / 2) * 2 / window.innerWidth;
+      this.lerp.target = this.rotation;
+    });
+  }
+
+
   resize() {
     
   }
   
   //To Update scene
   update(){
-    
+    this.lerp.current = GSAP.utils.interpolate(
+      this.lerp.current,
+      this.lerp.target,
+      this.lerp.ease
+    );
+
+    this.actualRoom.rotation.y = this.lerp.current;
+
   }
 }
