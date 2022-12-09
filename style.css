@@ -44,6 +44,60 @@ html, body {
   position: relative;
 }
 
+/* Theme Toggle Bar ----------------------------- */
+
+.toggle-bar {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  top: 48px;
+  right: 100px;
+  z-index: 99999999999;
+}
+
+.sun-wrapper,
+.moon-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toggle-button {
+  cursor: pointer;
+  position: relative;
+  width: 80px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-maroon);
+  border-radius: 999px;
+  margin: 0px 16px;
+  border: none;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.toggle-button:hover .toggle-circle {
+  transform: scale(0.9)
+}
+
+.slide {
+  transform: translate(24px);
+}
+
+.toggle-circle {
+  position: absolute;
+  left: 6px;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  background-color: var(--primary-color);
+  transition: all 0.2s ease-in-out;
+}
+
 /* Section Form ----------------------------- */
 .section-margin{
   height: 1900px;
@@ -84,8 +138,17 @@ margin-right: auto;
   margin-top: 64px;
 }
 
+.section-heading1{
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 3;
+  margin-top: 64px;
+  color: var(--primary-maroon);
+  
+}
+
 .section-text {
-  line-height: 2;
+  line-height: 3;
   margin-top: 18px;
   font-size: 16px;
 }
@@ -128,6 +191,16 @@ a:active {
   font-size: 40px;
   font-weight: 500;
   transform-origin: left;
+  transform: skewY(-25deg);
+  z-index: 5;
+  text-transform: uppercase;
+}
+
+.section-title-text2 {
+  display: block;
+  font-size: 40px;
+  font-weight: 500;
+  transform-origin: left;
   transform: skewY(25deg);
   z-index: 5;
   text-transform: uppercase;
@@ -157,6 +230,7 @@ a:active {
 .styleThree {
   top: 80px;
   transform: skewY(25deg);
+  background-color: var(--primary-maroon);
 }
 
 .section-number {
@@ -190,7 +264,7 @@ a:active {
 
 .hero-second {
   position: absolute;
-  top: calc(50% - 120px);
+  top: calc(50% - 400px);
   right: 0;
 }
 
