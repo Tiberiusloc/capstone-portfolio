@@ -3,7 +3,7 @@ import * as THREE from "three";
 import GSAP from "gsap";
 
 export default class Room{
-  constructor(){
+  constructor() {
     this.experience = new Experience();
     this.scene = this.experience.scene;
     this.resources = this.experience.resources;
