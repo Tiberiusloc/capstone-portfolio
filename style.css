@@ -84,18 +84,18 @@ html, body {
   transform: scale(0.9)
 }
 
-.slide {
-  transform: translate(24px);
-}
-
 .toggle-circle {
   position: absolute;
-  left: 6px;
+  left: 5px;
   border-radius: 50%;
-  width: 20px;
-  height: 20px;
+  width: 23px;
+  height: 23px;
   background-color: var(--primary-color);
   transition: all 0.2s ease-in-out;
+}
+
+.slide {
+  left: 52px;
 }
 
 /* Section Form ----------------------------- */
