@@ -23,13 +23,16 @@ export default class Controls {
     // To move room to right
     this.timeline = new GSAP.timeline();
     this.timeline.to(this.room.position, {
-      x: 0.5,
+      x: () => {
+        return this.sizes.width * 0.0004;
+      },
       scrollTrigger:{
         trigger:".first-move",
         markers: true,
         start: "top top",
         end: "bottom bottom",
-        scrub: 0.6,
+        scrub: 0.7,
+        invalidateOnRefresh: true,
       }
     });
 
