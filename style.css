@@ -74,7 +74,46 @@ svg{
 
 .page-wrapper {
   position: relative;
+
 }
+
+/* Nav menu */
+.navmenu-wrapper {
+  position: fixed;
+  z-index: 99999999999;
+}
+
+.navmenu {
+  position: fixed;
+  left: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: center;
+  width: 50%;
+  height: 70px;
+  z-index: 99999999999;
+  background-color: var(--color-maroon);
+  border-radius: 0px 0px 20px 5px;
+}
+
+.navbar-list{
+  list-style: none;
+  display: inline-block;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 1rem;
+  height: 60px;
+}
+
+.navbaritem a {
+  color: var(--color-background);
+  text-decoration: none;
+}
+
+
 
 /* Theme Toggle Bar ----------------------------- */
 
@@ -189,9 +228,9 @@ margin-right: auto;
 
 }
 
-a {
-  background-color: var(--color-maroon);
-  box-shadow: 1px 5px 0 var(--color-text);
+a.section-two-link {
+  background-color: var(--color-blue);
+  box-shadow: 2px 2.5px 5px var(--color-text);
   color: var(--color-background);
   display: inline-block;
   padding: 1em 1.5em;
@@ -201,9 +240,10 @@ a {
   text-transform: uppercase;
   width: 420px;
   height: 80px;
+  border-radius: 3%;
 }
 
-a:hover {
+a.section-two-link:hover {
   background-color: var(--color-background);
   box-shadow: 0 5px 0 var(--color-background);
   color: var(--text-black);
@@ -211,7 +251,7 @@ a:hover {
   transition: .8s;
 }
 
-a:active {
+a.section-two-link:active {
   box-shadow: none;
   top: 5px;
 }
@@ -328,4 +368,31 @@ a:active {
   text-transform: uppercase;
   color: var(--color-text);
 
+}
+
+/* Override CSS */
+
+.blue-text{
+  color: var(--color-blue);
+}
+
+.blue-border {
+  border-color: var(--color-blue);
+}
+
+.blue-background {
+  background-color: var(--color-blue);
+}
+
+.green-text{
+  color: var(--color-green);
+  padding: 3px;
+}
+
+.green-border {
+  border-color: var(--color-green);
+}
+
+.green-background {
+  background-color: var(--color-green);
 }
