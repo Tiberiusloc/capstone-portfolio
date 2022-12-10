@@ -108,7 +108,7 @@ svg{
   height: 60px;
 }
 
-.navbaritem a {
+.navbarlink {
   color: var(--color-background);
   text-decoration: none;
 }
