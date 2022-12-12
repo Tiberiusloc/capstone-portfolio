@@ -26,15 +26,16 @@ this.actualRoom.children.forEach(child => {
   child.castShadow = true;
   child.receiveShadow = true;
 
+  
   if (child instanceof THREE.Group) {
     child.children.forEach((groupchild) => {
       groupchild.castShadow = true;
       groupchild.receiveShadow = true;
     });
   }
-
-  if(child.name === "MainMonitorScreen"){
-    child.material = new THREE.MeshBasicMaterial({
+  
+  if(child.name === "Computer"){
+    child.children[1].material = new THREE.MeshBasicMaterial({
       map: this.resources.items.screen,
     });
   }
