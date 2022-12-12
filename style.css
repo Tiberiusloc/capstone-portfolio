@@ -81,16 +81,17 @@ svg{
 .navmenu-wrapper {
   position: fixed;
   z-index: 99999999999;
+  width: 50%;
 }
 
 .navmenu {
-  position: fixed;
+  position: relative;
   left: 0px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-content: center;
-  width: 50%;
+  width: 60%;
   height: 70px;
   z-index: 99999999999;
   background-color: var(--color-maroon);
@@ -395,4 +396,12 @@ a.section-two-link:active {
 
 .green-background {
   background-color: var(--color-green);
+}
+
+/* Media Queries */
+
+@media (max-width: 968px) {
+  .section{
+    width: 100%;
+  }
 }
