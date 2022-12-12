@@ -11,7 +11,6 @@ export default class Navbar extends EventEmitter{
 
 
   setEventListeners() {
-    console.log("hit")
     document.querySelectorAll(".navbarlink").forEach(a => {
       a.addEventListener("click", function(e){
         e.preventDefault();
