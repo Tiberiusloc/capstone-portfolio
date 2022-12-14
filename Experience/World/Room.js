@@ -39,6 +39,21 @@ this.actualRoom.children.forEach(child => {
       map: this.resources.items.screen,
     });
   }
+
+  if(child.name === "MiniFloor") {
+    child.position.x = 5.19495;
+    child.position.z = -2.8068;
+  }
+
+  if ( 
+    child.name === "Mailbox" ||
+    child.name === "FloorFirst" ||
+    child.name === "FloorSecond" ||
+    child.name === "FloorThird" ||
+    child.name === "Lamp") {
+    child.scale.set(0, 0, 0);
+  }
+
 });
 
     this.scene.add(this.actualRoom);
