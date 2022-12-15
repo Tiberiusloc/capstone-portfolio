@@ -9,6 +9,7 @@ export default class Room{
     this.resources = this.experience.resources;
     this.room = this.resources.items.room;
     this.actualRoom = this.room.scene
+    this.roomChildren = {}
 
     this.lerp = {
       current: 0,
@@ -45,16 +46,16 @@ this.actualRoom.children.forEach(child => {
     child.position.z = -2.8068;
   }
 
-  if ( 
-    child.name === "Mailbox" ||
-    child.name === "FloorFirst" ||
-    child.name === "FloorSecond" ||
-    child.name === "FloorThird" ||
-    child.name === "Lamp") {
-    child.scale.set(0, 0, 0);
-  }
-  
 
+    
+    child.scale.set(0, 0, 0);
+    if (child.name === "Cube") {
+      // child.scale.set(1, 1, 1);
+      child.position.set(7, 2.3, 3)
+      child.rotation.y = Math.PI / 4
+    }
+
+    this.roomChildren[child.name.toLowerCase()] = child;
 });
 
     this.scene.add(this.actualRoom);
