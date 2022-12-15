@@ -82,7 +82,7 @@ svg{
 }
 
 /* Nav menu */
-.navmenu-wrapper {
+/* .navmenu-wrapper {
   position: fixed;
   z-index: 99999999999;
   width: 50%;
@@ -116,7 +116,7 @@ svg{
 .navbarlink {
   color: var(--color-background);
   text-decoration: none;
-}
+} */
 
 
 
@@ -364,8 +364,8 @@ a.section-two-link:active {
 /* Hero Section ----------------------------- */
 
 .hero {
-  width: 99vw;
-  height: 99vh;
+  width: 100vw;
+  height: 100vh;
 }
 
 .hero-wrapper {
