@@ -53,6 +53,7 @@ this.actualRoom.children.forEach(child => {
     child.name === "Lamp") {
     child.scale.set(0, 0, 0);
   }
+  
 
 });
 
