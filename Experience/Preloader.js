@@ -31,21 +31,22 @@ export default class Preloader extends EventEmitter{
   }
 
   firstIntro() {
-    return new Promise ((resolve) => {
+
       
           this.timeline = new GSAP.timeline();
       
           if(this.device === "desktop") {
             this.timeline.to(this.roomChildren.cube.scale, {
-              x: 1,
-              y: 1,
-              z: 1,
+              x: 2,
+              y: 2,
+              z: 2,
               ease: "back.out(2.5)",
-              duration: 0.7,
+              duration: 1,
             }).to(this.room.position, {
-              x: -1,
+              x: 0,
+              y: 0.3,
               ease: "power1.out",
-              duration: 0.7,
+              duration: 1,
             })
           } else {
             this.timeline.to(this.roomChildren.cube.scale, {
@@ -57,11 +58,9 @@ export default class Preloader extends EventEmitter{
             .to(this.room.position, {
               z: -1,
               ease: "power1.out",
-              duration: 0.7,
+              duration: 1,
             })
           }
-
-    })
   }
 
   secondIntro() {
