@@ -31,29 +31,55 @@ export default class Preloader extends EventEmitter{
   }
 
   firstIntro() {
-    this.timeline = new GSAP.timeline();
+    return new Promise ((resolve) => {
+      
+          this.timeline = new GSAP.timeline();
+      
+          if(this.device === "desktop") {
+            this.timeline.to(this.roomChildren.cube.scale, {
+              x: 1,
+              y: 1,
+              z: 1,
+              ease: "back.out(2.5)",
+              duration: 0.7,
+            }).to(this.room.position, {
+              x: -1,
+              ease: "power1.out",
+              duration: 0.7,
+            })
+          } else {
+            this.timeline.to(this.roomChildren.cube.scale, {
+              x: 1,
+              y: 1,
+              z: 1,
+              ease: "back.out(2.5)",
+            })
+            .to(this.room.position, {
+              z: -1,
+              ease: "power1.out",
+              duration: 0.7,
+            })
+          }
+
+    })
+  }
+
+  secondIntro() {
+    this.secondTimeline = new GSAP.timeline();
 
     if(this.device === "desktop") {
-      this.timeline.to(this.roomChildren.cube.scale, {
-        x: 1,
-        y: 1,
-        z: 1,
-        ease: "back.out(2.5)",
-        duration: 0.7,
-      }).to(this.room.position, {
-        x: -1,
+      this.secondTimeline.to(this.room.position, {
+        x: 0,
+        y: 0,
+        z: 0,
         ease: "power1.out",
         duration: 0.7,
       })
     } else {
-      this.timeline.to(this.roomChildren.cube.scale, {
-        x: 1,
-        y: 1,
-        z: 1,
-        ease: "back.out(2.5)",
-      })
-      .to(this.room.position, {
-        z: -1,
+      this.secondTimeline.to(this.room.position, {
+        x: 0,
+        y: 0,
+        z: 0,
         ease: "power1.out",
         duration: 0.7,
       })
@@ -63,13 +89,16 @@ export default class Preloader extends EventEmitter{
   onScroll(e) {
     if(e.deltaY > 0){
       console.log("asdf")
-      window.removeEventListener("wheel", this.onScroll.bind(this))
+      window.removeEventListener("wheel", this.scrollOnceEvent)
+      this.secondIntro();
     }
   } 
 
   playIntro() {
     this.firstIntro();
     this.scrollOnceEvent = this.onScroll.bind(this)
-    window.addEventListener("wheel", this.onScroll.bind(this))
+    window.addEventListener("wheel", this.scrollOnceEvent)
   }
+  
+
 }
