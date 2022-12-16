@@ -5,7 +5,8 @@ import Camera from "./Camera.js";
 import Renderer from "./Renderer.js";
 import World from "./World/World.js";
 import Theme from "./Theme.js";
-import Navbar from "./Navbar.js";
+//import Navbar from "./Navbar.js";
+import Preloader from "./Preloader.js";
 import Resources from "./Utils/Resources.js";
 import assets from "./Utils/Assets.js";
 
@@ -24,9 +25,10 @@ export default class Experience{
     this.camera = new Camera();
     this.renderer = new Renderer();
     this.resources = new Resources(assets);
-    this.navbar = new Navbar();
+    //this.navbar = new Navbar();
     this.theme = new Theme();
     this.world = new World();
+    this.preloader = new Preloader();
     
     this.sizes.on("resize", ()=>{
       this.resize();
