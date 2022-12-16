@@ -40,23 +40,26 @@ export default class Preloader extends EventEmitter{
               x: 2,
               y: 2,
               z: 2,
-              ease: "back.out(2.5)",
+              ease: "back.out(.2)",
               duration: 1,
             }).to(this.room.position, {
               x: 0,
-              y: 0.3,
+              y: 0,
+              z: 0,
               ease: "power1.out",
               duration: 1,
             })
           } else {
             this.timeline.to(this.roomChildren.cube.scale, {
-              x: 1,
-              y: 1,
-              z: 1,
-              ease: "back.out(2.5)",
+              x: 2,
+              y: 2,
+              z: 2,
+              ease: "back.out(.01)",
             })
             .to(this.room.position, {
-              z: -1,
+              z: -.4,
+              x: 0,
+              y: 0,
               ease: "power1.out",
               duration: 1,
             })
@@ -66,9 +69,11 @@ export default class Preloader extends EventEmitter{
   secondIntro() {
     this.secondTimeline = new GSAP.timeline();
 
+    
+
     if(this.device === "desktop") {
       this.secondTimeline.to(this.room.position, {
-        x: 0,
+        x: 1,
         y: 0,
         z: 0,
         ease: "power1.out",
