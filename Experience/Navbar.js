@@ -1,25 +1,25 @@
-import EventEmitter from "events";
+// import EventEmitter from "events";
 
-export default class Navbar extends EventEmitter{
-  constructor() {
-    super();
+// export default class Navbar extends EventEmitter{
+//   constructor() {
+//     super();
 
-    this.navbar = document.querySelectorAll(".navbaritem")
+//     this.navbar = document.querySelectorAll(".navbaritem")
     
-    this.setEventListeners();
-  }
+//     this.setEventListeners();
+//   }
 
 
-  setEventListeners() {
-    document.querySelectorAll(".navbarlink").forEach(a => {
-      a.addEventListener("click", function(e){
-        e.preventDefault();
-        document.querySelector(this.getAttribute("href"))
-        .scrollIntoView({
-          behavior: "smooth",
-        });
-      });
-    });
+//   setEventListeners() {
+//     document.querySelectorAll(".navbarlink").forEach(a => {
+//       a.addEventListener("click", function(e){
+//         e.preventDefault();
+//         document.querySelector(this.getAttribute("href"))
+//         .scrollIntoView({
+//           behavior: "smooth",
+//         });
+//       });
+//     });
     
 //     // Close the dropdown if the user clicks outside of it
 //     window.onclick = function(event) {
@@ -34,5 +34,5 @@ export default class Navbar extends EventEmitter{
 //         }
 //       }
 //     }
-  };
-}
+//   };
+// }
