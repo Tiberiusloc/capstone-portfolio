@@ -37,15 +37,15 @@ export default class Preloader extends EventEmitter{
       
       if(this.device === "desktop") {
         this.timeline.to(this.roomChildren.cube.scale, {
-          x: 2,
-          y: 2,
-          z: 2,
-          ease: "back.out(.2)",
+          x: 1,
+          y: 1,
+          z: 1,
+          ease: "back.out(0.5)",
           duration: 0.7,
-        }).to(this.room.position, {
-          x: 0,
-          y: 0,
-          z: 0,
+        }, "same").to(this.room.position, {
+          x: -0.25,
+          y: -0.12,
+          z: 0.7,
           ease: "power1.out",
           duration: 0.7,
           onComplete: resolve,
@@ -56,9 +56,9 @@ export default class Preloader extends EventEmitter{
           y: 2,
           z: 2,
           ease: "back.out(.01)",
-        }, "same")
+        })
         .to(this.room.position, {
-          z: -.4,
+          z: 0,
           x: 0,
           y: 0,
           ease: "power1.out",
@@ -73,7 +73,16 @@ export default class Preloader extends EventEmitter{
     
     return new Promise ((resolve) => {
       this.secondTimeline = new GSAP.timeline();
-      
+      console.log(this.room.position)
+
+      // this.secondTimeline.to(
+    //     this.roomChildren.cube.rotation,
+    //     {
+    //         y: 2 * Math.PI 
+    //     },
+    //     "same"
+    // )
+
       if(this.device === "desktop") {
         this.secondTimeline.to(this.room.position, {
           x: 1,
@@ -81,22 +90,36 @@ export default class Preloader extends EventEmitter{
           z: 0,
           ease: 0.5,
 
-        }).to(this.roomChildren.cube.rotation.y, { 
-           y: 2 * Math.PI + Math.PI / 4,
-
-        }, "same").to(this.roomChildren.cube.scale, {
+        }).to(this.roomChildren.cube.rotation,
+          {
+          y: 2 * Math.PI + Math.PI / 4,
+          },
+          "same"
+      ).to(this.roomChildren.cube.scale, {
           x: 10,
           y: 10,
           z: 10,
           ease: 0.5,
 
         }, "same").to(this.roomChildren.cube.position, {
-            y: 28,
-            x: 61.8,
-            z: 65,
-            ease: 0.5,
+            y: 4.52946,
+            x: -0.093564,
+            z: 0.342581
 
-        }, "same")
+          }, "same").set(this.roomChildren.body.scale, {
+              x: 1,
+              y: 1,
+              z: 1,
+          }).to(this.roomChildren.cube.scale, {
+              x: 0,
+              y: 0,
+              z: 0,
+              duration: 1,
+        }).to(this.roomChildren.desks.scale, {
+            x: 1,
+            y: 1,
+            z: 1,
+        });
       } else {
         this.secondTimeline.to(this.room.position, {
           x: 0,
