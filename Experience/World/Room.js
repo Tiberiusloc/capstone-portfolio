@@ -51,7 +51,7 @@ this.actualRoom.children.forEach(child => {
     child.scale.set(0, 0, 0);
     if (child.name === "Cube") {
       
-      child.position.set(5, 6, 12)
+      //
       child.rotation.y = Math.PI / 4
     }
 
