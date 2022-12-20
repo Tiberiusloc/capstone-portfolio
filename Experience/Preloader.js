@@ -49,14 +49,14 @@ export default class Preloader extends EventEmitter{
           ease: "power1.out",
           duration: 0.7,
           onComplete: resolve,
-        })
+        }, "same")
       } else {
         this.timeline.to(this.roomChildren.cube.scale, {
           x: 2,
           y: 2,
           z: 2,
           ease: "back.out(.01)",
-        })
+        }, "same")
         .to(this.room.position, {
           z: -.4,
           x: 0,
@@ -80,29 +80,30 @@ export default class Preloader extends EventEmitter{
           y: 0,
           z: 0,
           ease: 0.5,
-          duration: 0.7,
-        }).to(this.roomChildren.cube.rotation, {
-           y: 2 * Math.PI + Math.PI / 4
-        }).to(this.roomChildren.cube.scale, {
+
+        }).to(this.roomChildren.cube.rotation.y, { 
+           y: 2 * Math.PI + Math.PI / 4,
+
+        }, "same").to(this.roomChildren.cube.scale, {
           x: 10,
           y: 10,
           z: 10,
           ease: 0.5,
-          duration: 0.7,
-        }).to(this.roomChildren.cube.position, {
+
+        }, "same").to(this.roomChildren.cube.position, {
             y: 28,
-            x: 60,
+            x: 61.8,
             z: 65,
             ease: 0.5,
-            duration: 0.7,
-        })
+
+        }, "same")
       } else {
         this.secondTimeline.to(this.room.position, {
           x: 0,
           y: 0,
           z: 0,
           ease: "power1.out",
-          duration: 0.7,
+
         });
       }
     });
