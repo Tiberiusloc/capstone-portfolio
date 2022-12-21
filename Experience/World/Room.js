@@ -42,8 +42,8 @@ this.actualRoom.children.forEach(child => {
   }
 
   if(child.name === "MiniFloor") {
-    child.position.x = 5.19495;
-    child.position.z = -2.8068;
+    child.position.x = -0.66219;
+    child.position.z = 2.86152;
   }
 
 
