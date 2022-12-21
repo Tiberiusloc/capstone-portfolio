@@ -21,10 +21,10 @@ export default class Camera{
       0.1,
       1000
     )
+    this.scene.add(this.perspectiveCamera)
     this.perspectiveCamera.position.x  = -10;
     this.perspectiveCamera.position.y  = 5;
     this.perspectiveCamera.position.z  = 10;
-    this.scene.add(this.perspectiveCamera)
 
   }
 
@@ -40,8 +40,8 @@ export default class Camera{
     );
     
     this.orthographicCamera.rotation.x = -Math.PI / 6;
-    this.orthographicCamera.position.x = 0.002;
-    this.orthographicCamera.position.y = 2.1;
+    this.orthographicCamera.position.x = 0.1;
+    this.orthographicCamera.position.y = 1.87;
     this.orthographicCamera.position.z = 2.7;
     
     this.scene.add(this.orthographicCamera)
