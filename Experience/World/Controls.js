@@ -20,6 +20,8 @@ export default class Controls {
 
     GSAP.registerPlugin(ScrollTrigger);
 
+    document.querySelector(".page").style.overflow = "visible";
+
     this.setSmoothScroll();
     this.setScrollTrigger();
   }
@@ -318,8 +320,8 @@ export default class Controls {
           this.room.children.forEach((child) => {
             if(child.name === "MiniFloor"){
               this.first = GSAP.to(child.position, {
-                x: 2.4,
-                z: 0,
+                x: -3.34083,
+                z: 5.49011,
                 ease: "back.out(2)",
                 duration: 1,
               });
