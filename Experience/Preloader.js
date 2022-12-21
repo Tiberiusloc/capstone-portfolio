@@ -94,17 +94,15 @@ export default class Preloader extends EventEmitter{
           {
           y: 2 * Math.PI + Math.PI / 4,
           },
-          "same"
       ).to(this.roomChildren.cube.scale, {
-          x: 10,
-          y: 10,
-          z: 10,
-          ease: 0.5,
+          x: 16,
+          y: 16,
+          z: 16,
 
         }, "same").to(this.roomChildren.cube.position, {
-            y: 4.52946,
-            x: -0.093564,
-            z: 0.342581
+            y: 7,
+            x: -0.1,
+            z: 0.5
 
           }, "same").set(this.roomChildren.body.scale, {
               x: 1,
@@ -114,12 +112,35 @@ export default class Preloader extends EventEmitter{
               x: 0,
               y: 0,
               z: 0,
-              duration: 1,
-        }).to(this.roomChildren.desks.scale, {
+          }).to(this.roomChildren.desks.scale, {
+              x: 1,
+              y: 1,
+              z: 1,
+              ease: "back.out(2.2)",
+              duration: 0.5,
+          }).to(this.roomChildren.floor_items.scale, {
             x: 1,
             y: 1,
             z: 1,
-        });
+            ease: "back.out(2.2)",
+            duration: 0.5,
+          }).to(this.roomChildren.desk_items.scale, {
+            x: .01,
+            y: .01,
+            z: .01,
+          }).to(this.roomChildren.chair.scale, {
+            x: 1,
+            y: 1,
+            z: 1,
+          }).to(this.roomChildren.desks.scale, {
+            x: 1,
+            y: 1,
+            z: 1,
+          }).to(this.roomChildren.desks.scale, {
+            x: 1,
+            y: 1,
+            z: 1,
+          });
       } else {
         this.secondTimeline.to(this.room.position, {
           x: 0,
