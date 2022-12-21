@@ -133,12 +133,14 @@ export default class Preloader extends EventEmitter{
             z: 1,
             ease: "back.out(2.2)",
             duration: 0.5,
+          }).set(this.roomChildren.minifloor.scale, {
+            x: 1,
+            y: 1,
+            z: 1,
           }).to(this.roomChildren.chair.scale, {
             x: 1,
             y: 1,
             z: 1,
-            ease: "back.out(2.2)",
-            duration: 0.5,
           }, "chair").to(this.roomChildren.chair.rotation, {
             y: 4 * Math.PI + Math.PI / 4,
             ease: "power2.out",
@@ -164,7 +166,6 @@ export default class Preloader extends EventEmitter{
     let currentY = e.touches[0].clientY;
     let difference = this.initialY - currentY;
     if(difference > 0){
-      console.log("swipped up");
       this.removeEventListeners();
       this.playSecondIntro();
     }
@@ -179,6 +180,7 @@ export default class Preloader extends EventEmitter{
 
   async playIntro() {
     await this.firstIntro();
+    this.moveFlag = true;
     this.scrollOnceEvent = this.onScroll.bind(this)
     this.touchStart = this.onTouch.bind(this);
     this.touchMove = this.onTouchMove.bind(this);
@@ -188,7 +190,36 @@ export default class Preloader extends EventEmitter{
   }
 
   async playSecondIntro() {
+    this.moveFlag = false;
+    this.scaleFlag = true;
     await this.secondIntro();
+    this.scaleFlag = false;
     this.emit("enablecontrols") 
+  }
+
+
+  move() {
+    if(this.device === "desktop"){
+      this.room.position.set(-0.25,-0.12, 0.72);
+    } else {
+      this.room.position.set(0, 0, 0);
+    }
+  }
+
+  scale() {
+    if(this.device === "desktop"){
+      this.room.scale.set(0.11, 0.11, 0.11);
+    } else {
+      this.room.position.set(0.07, 0.07, 0.07);
+    }
+  }
+
+  update() {
+    if(this.moveFlag){
+      this.move();
+    }
+    if(this.scaleFlag){
+      this.scale();
+    }
   }
 }
