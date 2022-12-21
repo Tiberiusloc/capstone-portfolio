@@ -75,17 +75,8 @@ export default class Preloader extends EventEmitter{
       this.secondTimeline = new GSAP.timeline();
       console.log(this.room.position)
 
-      // this.secondTimeline.to(
-    //     this.roomChildren.cube.rotation,
-    //     {
-    //         y: 2 * Math.PI 
-    //     },
-    //     "same"
-    // )
-
-      if(this.device === "desktop") {
         this.secondTimeline.to(this.room.position, {
-          x: 1,
+          x: 0,
           y: 0,
           z: 0,
           ease: 0.5,
@@ -125,32 +116,36 @@ export default class Preloader extends EventEmitter{
             ease: "back.out(2.2)",
             duration: 0.5,
           }).to(this.roomChildren.desk_items.scale, {
-            x: .01,
-            y: .01,
-            z: .01,
+            x: -0.0085,
+            y: -0.0085,
+            z: -0.0085,
+            ease: "back.out(2.2)",
+            duration: 0.5,
+          }).to(this.roomChildren.computer.scale, {
+            x: 1,
+            y: 1,
+            z: 1,
+            ease: "back.out(2.2)",
+            duration: 0.5,
+          }).to(this.roomChildren.bed.scale, {
+            x: 1,
+            y: 1,
+            z: 1,
+            ease: "back.out(2.2)",
+            duration: 0.5,
           }).to(this.roomChildren.chair.scale, {
             x: 1,
             y: 1,
             z: 1,
-          }).to(this.roomChildren.desks.scale, {
-            x: 1,
-            y: 1,
-            z: 1,
-          }).to(this.roomChildren.desks.scale, {
-            x: 1,
-            y: 1,
-            z: 1,
-          });
-      } else {
-        this.secondTimeline.to(this.room.position, {
-          x: 0,
-          y: 0,
-          z: 0,
-          ease: "power1.out",
-
-        });
-      }
-    });
+            ease: "back.out(2.2)",
+            duration: 0.5,
+          }, "chair").to(this.roomChildren.chair.rotation, {
+            y: 4 * Math.PI + Math.PI / 4,
+            ease: "power2.out",
+            duration: 1,
+            onComplete: resolve,
+          }, "chair")
+      });
   }
 
   onScroll(e) {
