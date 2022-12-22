@@ -1,6 +1,8 @@
 import EventEmitter from "events";
 import Experience from "./Experience";
 import GSAP from "gsap";
+import convert from "./Utils/convertDivsToSpans.js"
+
 
 export default class Preloader extends EventEmitter{
   constructor() {
@@ -25,63 +27,101 @@ export default class Preloader extends EventEmitter{
   }
 
   setAssets() {
+    convert(document.querySelector(".intro-text"));
+    convert(document.querySelector(".hero-main-title"));
+    convert(document.querySelector(".hero-main-description"));
+    convert(document.querySelector(".hero-second-subheading"));
+    convert(document.querySelector(".second-sub"));
+
     this.room = this.experience.world.room.actualRoom;
     this.roomChildren = this.experience.world.room.roomChildren;
-    console.log(this.roomChildren);
-  }
+}
 
-  firstIntro() {
-
-    return new Promise ((resolve) => {       
-      this.timeline = new GSAP.timeline();
-      
-      if(this.device === "desktop") {
-        this.timeline.to(this.roomChildren.cube.scale, {
-          x: 1,
-          y: 1,
-          z: 1,
-          ease: "back.out(0.5)",
-          duration: 0.7,
-        }, "same").to(this.room.position, {
-          x: -0.25,
-          y: -0.12,
-          z: 0.7,
-          ease: "power1.out",
-          duration: 0.7,
-          onComplete: resolve,
-        }, "same")
-      } else {
-        this.timeline.to(this.roomChildren.cube.scale, {
-          x: 2,
-          y: 2,
-          z: 2,
-          ease: "back.out(.01)",
-        })
-        .to(this.room.position, {
-          z: 0,
-          x: 0,
-          y: 0,
-          ease: "power1.out",
-          duration: 1,
-          onComplete: resolve,
-        })
-      }
-    })
-  }
+firstIntro() {
+    return new Promise((resolve) => {
+        this.timeline = new GSAP.timeline();
+        this.timeline.set(".animatedis", { y: 0, yPercent: 100 });
+        this.timeline.to(".preloader", {
+            opacity: 0,
+            delay: 1,
+            onComplete: () => {
+                document
+                    .querySelector(".preloader")
+                    .classList.add("hidden");
+            },
+        });
+        if (this.device === "desktop") {
+            this.timeline
+                .to(this.roomChildren.cube.scale, {
+                    x: 1.4,
+                    y: 1.4,
+                    z: 1.4,
+                    ease: "back.out(2.5)",
+                    duration: 0.7,
+                })
+                .to(this.room.position, {
+                    x: -0.3,
+                    ease: "power1.out",
+                    duration: 0.7,
+                });
+        } else {
+            this.timeline
+                .to(this.roomChildren.cube.scale, {
+                    x: 1.4,
+                    y: 1.4,
+                    z: 1.4,
+                    ease: "back.out(2.5)",
+                    duration: 1,
+                },"same")
+                .to(this.room.position, {
+                    z: -1,
+                    x: 0.1,
+                    ease: "power1.out",
+                    duration: 0.7,
+                },"same");
+        }
+        this.timeline
+            .to(".intro-text .animatedis", {
+                yPercent: 0,
+                stagger: 0.05,
+                ease: "back.out(1.7)",
+            })
+            .to(
+                ".arrow-svg-wrapper",
+                {
+                    opacity: 1,
+                },
+                "same"
+            )
+            .to(
+                ".toggle-bar",
+                {
+                    opacity: 1,
+                    onComplete: resolve,
+                },
+                "same"
+            );
+    });
+}
   
   secondIntro() {
     
     return new Promise ((resolve) => {
       this.secondTimeline = new GSAP.timeline();
-      console.log(this.room.position)
 
-        this.secondTimeline.to(this.room.position, {
+        this.secondTimeline.to(".intro-text .animatedis", {
+              yPercent: 100,
+              stagger: 0.05,
+              ease: "back.in(1.7)",
+          },"fadeout").to(".arrow-svg-wrapper",{
+              opacity: 0,
+          },"fadeout").to(this.room.position, {
           x: 0,
           y: 0,
           z: 0,
-          ease: 0.5,
+          ease: "power1.out",
 
-        }).to(this.roomChildren.cube.rotation,
+        }, "same").to(this.roomChildren.cube.rotation,
           {
           y: 2 * Math.PI + Math.PI / 4,
           },
@@ -90,6 +130,8 @@ export default class Preloader extends EventEmitter{
           y: 16,
           z: 16,
 
+        }, "same").to(this.camera.orthographicCamera.position, {
+          y: 2.1,
         }, "same").to(this.roomChildren.cube.position, {
             y: 7,
             x: -0.1,
@@ -103,25 +145,41 @@ export default class Preloader extends EventEmitter{
               x: 0,
               y: 0,
               z: 0,
-          }).to(this.roomChildren.desks.scale, {
+          }, "introtext").to(".hero-main-title .animatedis", {
+            yPercent: 0,
+            stagger: 0.07,
+            ease: "back.out(1.7)",
+          }, "introtext").to(".hero-main-description .animatedis", {
+              yPercent: 0,
+              stagger: 0.07,
+              ease: "back.out(1.7)",
+          }, "introtext").to(".first-sub .animatedis", {
+            yPercent: 0,
+            stagger: 0.07,
+            ease: "back.out(1.7)",
+          }, "introtext").to(".second-sub .animatedis", {
+            yPercent: 0,
+            stagger: 0.07,
+            ease: "back.out(1.7)",
+          }, "introtext").to(this.roomChildren.desks.scale, {
               x: 1,
               y: 1,
               z: 1,
               ease: "back.out(2.2)",
               duration: 0.5,
-          }).to(this.roomChildren.floor_items.scale, {
+          }, ">-0.1").to(this.roomChildren.floor_items.scale, {
             x: 1,
             y: 1,
             z: 1,
             ease: "back.out(2.2)",
             duration: 0.5,
-          }).to(this.roomChildren.desk_items.scale, {
+          }, ">-0.2").to(this.roomChildren.desk_items.scale, {
             x: -0.0085,
             y: -0.0085,
             z: -0.0085,
             ease: "back.out(2.2)",
             duration: 0.5,
-          }).to(this.roomChildren.computer.scale, {
+          }, ">-0.1").to(this.roomChildren.computer.scale, {
             x: 1,
             y: 1,
             z: 1,
@@ -133,26 +191,27 @@ export default class Preloader extends EventEmitter{
             z: 1,
             ease: "back.out(2.2)",
             duration: 0.5,
-          }).set(this.roomChildren.minifloor.scale, {
-            x: 1,
-            y: 1,
-            z: 1,
           }).to(this.roomChildren.chair.scale, {
             x: 1,
             y: 1,
             z: 1,
+            ease: "power2.out",
+            duration: 0.5,
           }, "chair").to(this.roomChildren.chair.rotation, {
             y: 4 * Math.PI + Math.PI / 4,
             ease: "power2.out",
             duration: 1,
             onComplete: resolve,
-          }, "chair")
+          }, "chair").set(this.roomChildren.minifloor.scale, {
+            x: 1,
+            y: 1,
+            z: 1,
+          });
       });
   }
 
   onScroll(e) {
     if(e.deltaY > 0){
-      console.log("asdf")
       this.removeEventListeners();
       this.playSecondIntro();
     }
@@ -179,38 +238,37 @@ export default class Preloader extends EventEmitter{
   }
 
   async playIntro() {
+    this.scaleFlag = true;
     await this.firstIntro();
     this.moveFlag = true;
-    this.scrollOnceEvent = this.onScroll.bind(this)
+    this.scrollOnceEvent = this.onScroll.bind(this);
     this.touchStart = this.onTouch.bind(this);
     this.touchMove = this.onTouchMove.bind(this);
-    window.addEventListener("wheel", this.scrollOnceEvent)
-    window.addEventListener("touchstart", this.touchStart)
-    window.addEventListener("touchmove", this.touchMove)
-  }
-
-  async playSecondIntro() {
+    window.addEventListener("wheel", this.scrollOnceEvent);
+    window.addEventListener("touchstart", this.touchStart);
+    window.addEventListener("touchmove", this.touchMove);
+}
+async playSecondIntro() {
     this.moveFlag = false;
-    this.scaleFlag = true;
     await this.secondIntro();
     this.scaleFlag = false;
-    this.emit("enablecontrols") 
-  }
+    this.emit("enablecontrols");
+}
 
 
   move() {
-    if(this.device === "desktop"){
-      this.room.position.set(-0.25,-0.12, 0.72);
+    if (this.device === "desktop") {
+        this.room.position.set(-0.3, 0, 0);
     } else {
-      this.room.position.set(0, 0, 0);
+        this.room.position.set(0.1, 0, -1);
     }
-  }
+}
 
   scale() {
     if(this.device === "desktop"){
       this.room.scale.set(0.11, 0.11, 0.11);
     } else {
-      this.room.position.set(0.07, 0.07, 0.07);
+      this.room.scale.set(0.07, 0.07, 0.07);
     }
   }
 
