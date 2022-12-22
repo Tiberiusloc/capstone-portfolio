@@ -18,8 +18,9 @@ export default class Room{
     };
 
     this.setModel();
-    this.onMouseMove();
-
+    this.experience.preloader.on("enablecontrols", () => {
+      this.onMouseMove();
+    })
   }
 
   setModel() {
