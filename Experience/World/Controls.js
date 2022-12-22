@@ -84,7 +84,7 @@ export default class Controls {
       });
       this.firstMoveTimeline.to(this.room.position, {
         x: () => {
-          return this.sizes.width * 0.00049;
+          return this.sizes.width * 0.000485;
         },
       });
       // Second Section
