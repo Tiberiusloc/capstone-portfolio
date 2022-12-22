@@ -84,7 +84,7 @@ export default class Controls {
       });
       this.firstMoveTimeline.to(this.room.position, {
         x: () => {
-          return this.sizes.width * 0.00055;
+          return this.sizes.width * 0.00047;
         },
       });
       // Second Section
@@ -102,7 +102,7 @@ export default class Controls {
           return 1;
         },
         z: () => {
-          return this.sizes.height * 0.0012;
+          return this.sizes.height * 0.002;
         },
       },
       "same"
@@ -134,7 +134,6 @@ export default class Controls {
       
         //Mobile Timeline
         ScrollTrigger.matchMedia({"(max-width: 968px)": () => {
-          console.log("mobile");
           this.firstMoveTimeline = new GSAP.timeline({
             scrollTrigger: {
             trigger: ".first-move",
@@ -160,18 +159,18 @@ export default class Controls {
           })
           this.secondMoveTimeline.to(this.room.position, {
             x: () => {
-              return 1.5;
+              return 2.4;
             },
             z: () => {
-              return this.sizes.height * 0.0012;
+              return this.sizes.height * 0.0040;
             },
           },
           "same"
           )
           this.secondMoveTimeline.to(this.room.scale, {
-            x: 0.45,
-            y: 0.45,
-            z: 0.45,
+            x: 0.60,
+            y: 0.60,
+            z: 0.60,
           },
           "same"
           )
