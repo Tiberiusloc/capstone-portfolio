@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 
+
 *{
   margin: 0;
   padding: 0;
@@ -152,9 +153,15 @@ svg{
 }
 
 .intro-text{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   top: 50%;
   left: 50%;
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--color-text);
   transform: translate(-50%, -50%);
 }
 
@@ -347,6 +354,9 @@ border-bottom-right-radius: 0px 0px;
   font-weight: 700;
   line-height: 3;
   margin-top: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .section-heading1{
@@ -390,6 +400,35 @@ a.section-two-link:hover {
 }
 
 a.section-two-link:active {
+  box-shadow: none;
+  top: 5px;
+}
+
+/* Section Three */
+a.section-three-link {
+  background-color: var(--color-green);
+  box-shadow: 2px 2.5px 5px var(--color-text);
+  color: var(--color-background);
+  display: inline-block;
+  padding: 1em 1.5em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 420px;
+  height: 80px;
+  border-radius: 3%;
+}
+
+a.section-three-link:hover {
+  background-color: var(--color-background);
+  box-shadow: 0 5px 0 var(--color-background);
+  color: var(--text-black);
+  cursor: pointer;
+  transition: .8s;
+}
+
+a.section-three-link:active {
   box-shadow: none;
   top: 5px;
 }
@@ -457,6 +496,19 @@ a.section-two-link:active {
   right: 0;
   color: var(--color-maroon);
   font-size: 24px;
+}
+
+/* Icon Wrappers */
+
+.instagram-icon-wrapper,
+.linkedin-icon-wrapper,
+.github-icon-wrapper {
+  display: flex;
+  padding: 1em 1.5em;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
 }
 
 /* Hero Section ----------------------------- */
@@ -545,6 +597,25 @@ a.section-two-link:active {
     right: 0;
     left: auto;
   }
+  .hero-main{
+    bottom: 120px;
+  }
+  .hero-second{
+    top: 160px;
+  }
+  .hero-wrapper{
+    width: calc(100% - 60px);
+  }
+  .hero-main-title{
+    font-size: 32px;
+  }
+  .hero-main-description{
+    font-size: 18px;
+  }
+  .hero-second-subheading{
+    font-size: 18px;
+  }
+
 }
 
 
