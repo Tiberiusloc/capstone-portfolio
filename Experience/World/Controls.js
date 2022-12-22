@@ -186,7 +186,7 @@ export default class Controls {
             },
           }).to(this.camera.orthographicCamera.position ,{
             y: -1,
-            x: 0,
+            x: 1,
           })
           
         },
