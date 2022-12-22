@@ -116,7 +116,7 @@ firstIntro() {
           },"fadeout").to(".arrow-svg-wrapper",{
               opacity: 0,
           },"fadeout").to(this.room.position, {
-          x: 0.075,
+          x: 0.085,
           y: 0,
           z: 0,
           ease: "power1.out",

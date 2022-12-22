@@ -86,7 +86,7 @@ this.actualRoom.children.forEach(child => {
       this.lerp.target,
       this.lerp.ease
     );
-
+      
     this.actualRoom.rotation.y = this.lerp.current;
 
   }
