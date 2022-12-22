@@ -116,7 +116,7 @@ firstIntro() {
           },"fadeout").to(".arrow-svg-wrapper",{
               opacity: 0,
           },"fadeout").to(this.room.position, {
-          x: 0,
+          x: 0.075,
           y: 0,
           z: 0,
           ease: "power1.out",
@@ -134,7 +134,7 @@ firstIntro() {
           y: 2.1,
         }, "same").to(this.roomChildren.cube.position, {
             y: 7,
-            x: -0.1,
+            x: -0.5,
             z: 0.5
 
           }, "same").set(this.roomChildren.body.scale, {

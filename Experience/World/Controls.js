@@ -84,7 +84,7 @@ export default class Controls {
       });
       this.firstMoveTimeline.to(this.room.position, {
         x: () => {
-          return this.sizes.width * 0.00047;
+          return this.sizes.width * 0.00049;
         },
       });
       // Second Section
@@ -143,9 +143,9 @@ export default class Controls {
             invalidateOnRefresh: true,
             },
           }).to(this.room.scale , {
-            x: 0.14,
-            y: 0.14,
-            z: 0.14,
+            x: 0.10,
+            y: 0.10,
+            z: 0.10,
           });
           // Second Section
           this.secondMoveTimeline = new GSAP.timeline({
@@ -159,7 +159,7 @@ export default class Controls {
           })
           this.secondMoveTimeline.to(this.room.position, {
             x: () => {
-              return 2.4;
+              return 2.7;
             },
             z: () => {
               return this.sizes.height * 0.0040;
